@@ -1,16 +1,13 @@
 from flask import Flask, render_template, jsonify, request
-import requests 
+import requests
 
 app = Flask(__name__)
 
-@app.route ('/') #/ leva pro home 
+@app.route('/')
 def home():
     return render_template('index.html')
 
-@app.route ('/search', methods = ['POST']) #dados enviados por forms ou algo do tipo 
+@app.route('/search', methods=['POST'])
 def search():
-    team_name= request.form.get ('team')
+    team_name = request.form.get('team')
     return jsonify({"time": team_name})
-    
-
-
