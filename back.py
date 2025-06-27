@@ -12,6 +12,13 @@ def search():
     team_name= request.form ['team']
     return jsonify({"time": team_name})
     
+from flask import Flask, request, jsonify
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# Vercel expects a function called `handler`
+def handler(request):
+    if request.method == "POST":
+        team_name = request.form.get("team", "")
+        return jsonify({"time": team_name})
+    else:
+        return jsonify({"error": "Only POST method allowed."}), 405
+
