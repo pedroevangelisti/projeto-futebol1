@@ -1,10 +1,22 @@
 {
   "version": 2,
   "builds": [
-    { "src": "back.py", "use": "@vercel/python" }
+    {
+      "src": "back.py",
+      "use": "@vercel/python",
+      "config": {
+        "runtime": "python3.9"
+      }
+    },
+    {
+      "src": "templates/*",
+      "use": "@vercel/static"
+    }
   ],
   "routes": [
-    { "src": "/search", "methods": ["POST"], "dest": "back.py" },
-    { "src": "/", "dest": "back.py" }
+    {
+      "src": "/(.*)",
+      "dest": "back.py"
+    }
   ]
 }
