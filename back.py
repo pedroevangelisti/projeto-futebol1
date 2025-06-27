@@ -9,7 +9,7 @@ def home():
 
 @app.route ('/search', methods = ['POST']) #dados enviados por forms ou algo do tipo 
 def search():
-    team_name= request.form ['team']
+    team_name= request.form.get ('team')
     return jsonify({"time": team_name})
     
 
